@@ -1,0 +1,30 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div style="padding: 10px;border:1px solid gray;width:40%;margin:0 auto;">
+            选择报关单excel模板上传
+            <hr />
+            <form method="post" action='/parse_excel' enctype="multipart/form-data" >
+                <div style="margin-top:30px"></div>
+                <input type="file" id="uploadFile" name='excel' /> 
+                <input type="submit" value="上传" style="width:100px" />
+            </form>
+        </div>
+        <div style="padding: 10px;border:1px solid gray;width:40%;margin:0 auto;margin-top:30px;">
+            {% if parse_result %}
+                <table cellpadding="10" >
+                    <tr>
+                        <td><b>境内发货人</b></td>
+                        <td>{{ parse_result.get('sender') }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>境外收货人</b></td>
+                        <td>{{ parse_result.get('receiver') }}</td>
+                    </tr>
+                        
+                </table>
+            {% endif %}
+        </div>
+    </body>
+</html>
